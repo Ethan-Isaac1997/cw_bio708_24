@@ -11,9 +11,9 @@
 
 <meta name="author" content="isqag" />
 
-<meta name="date" content="2024-08-22" />
+<meta name="date" content="2024-08-27" />
 
-<title>script.R</title>
+<title>cw_8_27.R</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,189 +350,135 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">script.R</h1>
+<h1 class="title toc-ignore">cw_8_27.R</h1>
 <h4 class="author">isqag</h4>
-<h4 class="date">2024-08-22</h4>
+<h4 class="date">2024-08-27</h4>
 
 </div>
 
 
-<pre class="r"><code>c(1,2)</code></pre>
-<pre><code>## [1] 1 2</code></pre>
-<pre class="r"><code>#test codes 
-## produce 100 random numbers that follows a normal distribution
-x &lt;- rnorm(100, mean = 0, sd = 1)
+<pre class="r"><code># setup -------------------------------------------------------------------
 
-## estimate mean
-mean(x)</code></pre>
-<pre><code>## [1] -0.08649316</code></pre>
-<pre class="r"><code>## estimate SD
-sd(x)</code></pre>
-<pre><code>## [1] 0.9636089</code></pre>
-<pre class="r"><code>## produce 100 random numbers that follows a normal distribution
-x &lt;- rnorm(100, mean = 0, sd = 1)
+rm(list = ls())
+# Matrix ------------------------------------------------------------------
+## numeric 
 
-## estimate mean
-mean(x)</code></pre>
-<pre><code>## [1] 0.06167104</code></pre>
-<pre class="r"><code>## estimate SD
-sd(x)</code></pre>
-<pre><code>## [1] 0.9427265</code></pre>
-<pre class="r"><code># exercise  ---------------------------------------------------------------
+nm1 &lt;- cbind(rep(1, 4),
+           rep(2, 4),
+           rep(3, 4),
+           rep(4, 4))
+           
+nm2 &lt;- matrix(rep(1:4, each = 4),
+               nrow= 4,
+               ncol = 4,
+               byrow = TRUE)
+## character 
+cm1 &lt;- cbind(rep(&quot;a&quot;, 4),
+             rep(&quot;b&quot;, 4),
+             rep(&quot;c&quot;, 4),
+             rep(&quot;d&quot;, 4))
+             
+cm2 &lt;- matrix(rep(letters[1:4], each = 4),
+               nrow = 4 ,
+               ncol = 4 ,
+               byrow = TRUE)
+                    
 
-## vector
-x &lt;- c(1 ,2 , 3 , 4 , 5 , 6)
-x</code></pre>
-<pre><code>## [1] 1 2 3 4 5 6</code></pre>
-<pre class="r"><code>##character 
+set.seed(1)
+x &lt;- matrix(rnorm(100), nrow = 10, ncol = 10)
+which (x&gt;2)</code></pre>
+<pre><code>## [1] 61 70</code></pre>
+<pre class="r"><code>mean(x[x&gt;2])</code></pre>
+<pre><code>## [1] 2.287115</code></pre>
+<pre class="r"><code># Vector ------------------------------------------------------------------
+## numeric
+v1 &lt;- c(3, 6, 20)
 
-x &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
-x</code></pre>
-<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
-<pre class="r"><code>## logical
+v2 &lt;- c(4, 50, length = 6)
+v3 &lt;- rep(1,20)
 
-x &lt;- c(TRUE, FALSE, FALSE)
-x</code></pre>
-<pre><code>## [1]  TRUE FALSE FALSE</code></pre>
-<pre class="r"><code>## seq
-x &lt;- 1:5
-x</code></pre>
-<pre><code>## [1] 1 2 3 4 5</code></pre>
-<pre class="r"><code>##replicate
+## character 
+v4 &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+v5 &lt;- c(&quot;a&quot;, 6)
+v6 &lt;- letters[1:20]
+##element id
 
-x &lt;- rep(2,5)
+set.seed(1)
+x &lt;- rnorm(100)
 x</code></pre>
-<pre><code>## [1] 2 2 2 2 2</code></pre>
-<pre class="r"><code>x &lt;- rep(&quot;a&quot;, 8)
-x</code></pre>
-<pre><code>## [1] &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot; &quot;a&quot;</code></pre>
-<pre class="r"><code>## sequence by
-
-x &lt;- seq(2, 5, by = .5)
-x</code></pre>
-<pre><code>## [1] 2.0 2.5 3.0 3.5 4.0 4.5 5.0</code></pre>
-<pre class="r"><code>x &lt;- seq(2, 5, by = 1)
-x</code></pre>
-<pre><code>## [1] 2 3 4 5</code></pre>
-<pre class="r"><code>x &lt;- seq(2, 5, length = 14)
-x</code></pre>
-<pre><code>##  [1] 2.000000 2.230769 2.461538 2.692308 2.923077 3.153846 3.384615 3.615385
-##  [9] 3.846154 4.076923 4.307692 4.538462 4.769231 5.000000</code></pre>
-<pre class="r"><code>class(x)</code></pre>
-<pre><code>## [1] &quot;numeric&quot;</code></pre>
-<pre class="r"><code>typeof(x)</code></pre>
-<pre><code>## [1] &quot;double&quot;</code></pre>
-<pre class="r"><code>length(x)</code></pre>
-<pre><code>## [1] 14</code></pre>
-<pre class="r"><code>sum(x)</code></pre>
-<pre><code>## [1] 49</code></pre>
-<pre class="r"><code>mean(x)</code></pre>
-<pre><code>## [1] 3.5</code></pre>
-<pre class="r"><code>## element ID
-
-y &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
-class(y)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="r"><code>length(y)</code></pre>
-<pre><code>## [1] 3</code></pre>
-<pre class="r"><code>x &lt;- c(2,2,3,2,5)
-x[4] # access element #4</code></pre>
-<pre><code>## [1] 2</code></pre>
-<pre class="r"><code>x &lt;- c(2,2,3,2,5)
-x[c(1,2)] # access element #1 and 2</code></pre>
-<pre><code>## [1] 2 2</code></pre>
-<pre class="r"><code>x[c(2,4)] # access elements #2 and 4</code></pre>
-<pre><code>## [1] 2 2</code></pre>
-<pre class="r"><code>x[2:4] # access elements #2-4</code></pre>
-<pre><code>## [1] 2 3 2</code></pre>
-<pre class="r"><code>## matrix
-
-#ex.1 cbind: combine objects by column
-x &lt;- cbind(c(1,2,3), c(4,5,6))
-x</code></pre>
-<pre><code>##      [,1] [,2]
-## [1,]    1    4
-## [2,]    2    5
-## [3,]    3    6</code></pre>
-<pre class="r"><code>#ex.2 rbind: combine objects by row
-x &lt;- rbind(c(1,2,3), c(4,5,6))
-x</code></pre>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    2    3
-## [2,]    4    5    6</code></pre>
-<pre class="r"><code>#ex.3 matrix: specify elements and the number of rows (nrow) and columns (ncol)
-x &lt;- matrix(1:9, nrow = 3, ncol = 3)
-x</code></pre>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    4    7
-## [2,]    2    5    8
-## [3,]    3    6    9</code></pre>
-<pre class="r"><code>class(x)</code></pre>
-<pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
-<pre class="r"><code>typeof(x)</code></pre>
-<pre><code>## [1] &quot;integer&quot;</code></pre>
-<pre class="r"><code>dim(x)</code></pre>
-<pre><code>## [1] 3 3</code></pre>
-<pre class="r"><code>colSums(x)</code></pre>
-<pre><code>## [1]  6 15 24</code></pre>
-<pre class="r"><code>rowSums(x)</code></pre>
-<pre><code>## [1] 12 15 18</code></pre>
-<pre class="r"><code>y &lt;- matrix(c(&quot;a&quot;,&quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;), nrow = 3, ncol = 2)
-y</code></pre>
-<pre><code>##      [,1] [,2]
-## [1,] &quot;a&quot;  &quot;d&quot; 
-## [2,] &quot;b&quot;  &quot;e&quot; 
-## [3,] &quot;c&quot;  &quot;f&quot;</code></pre>
-<pre class="r"><code>class(y)</code></pre>
-<pre><code>## [1] &quot;matrix&quot; &quot;array&quot;</code></pre>
-<pre class="r"><code>typeof(y)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="r"><code>dim(y)</code></pre>
-<pre><code>## [1] 3 2</code></pre>
-<pre class="r"><code>##access 
-
-x[2,3] # access an element in row #2 and colum #3</code></pre>
-<pre><code>## [1] 8</code></pre>
-<pre class="r"><code>x[2,] # access elements in row #2</code></pre>
-<pre><code>## [1] 2 5 8</code></pre>
-<pre class="r"><code>x[c(2,3),] # access elements in rows #2 and 3</code></pre>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    2    5    8
-## [2,]    3    6    9</code></pre>
-<pre class="r"><code>x[,c(2,3)] # access elements in columns #2 and 3</code></pre>
-<pre><code>##      [,1] [,2]
-## [1,]    4    7
-## [2,]    5    8
-## [3,]    6    9</code></pre>
-<pre class="r"><code># Dataframe ---------------------------------------------------------------
-
-
+<pre><code>##   [1] -0.626453811  0.183643324 -0.835628612  1.595280802  0.329507772
+##   [6] -0.820468384  0.487429052  0.738324705  0.575781352 -0.305388387
+##  [11]  1.511781168  0.389843236 -0.621240581 -2.214699887  1.124930918
+##  [16] -0.044933609 -0.016190263  0.943836211  0.821221195  0.593901321
+##  [21]  0.918977372  0.782136301  0.074564983 -1.989351696  0.619825748
+##  [26] -0.056128740 -0.155795507 -1.470752384 -0.478150055  0.417941560
+##  [31]  1.358679552 -0.102787727  0.387671612 -0.053805041 -1.377059557
+##  [36] -0.414994563 -0.394289954 -0.059313397  1.100025372  0.763175748
+##  [41] -0.164523596 -0.253361680  0.696963375  0.556663199 -0.688755695
+##  [46] -0.707495157  0.364581962  0.768532925 -0.112346212  0.881107726
+##  [51]  0.398105880 -0.612026393  0.341119691 -1.129363096  1.433023702
+##  [56]  1.980399899 -0.367221476 -1.044134626  0.569719627 -0.135054604
+##  [61]  2.401617761 -0.039240003  0.689739362  0.028002159 -0.743273209
+##  [66]  0.188792300 -1.804958629  1.465554862  0.153253338  2.172611670
+##  [71]  0.475509529 -0.709946431  0.610726353 -0.934097632 -1.253633400
+##  [76]  0.291446236 -0.443291873  0.001105352  0.074341324 -0.589520946
+##  [81] -0.568668733 -0.135178615  1.178086997 -1.523566800  0.593946188
+##  [86]  0.332950371  1.063099837 -0.304183924  0.370018810  0.267098791
+##  [91] -0.542520031  1.207867806  1.160402616  0.700213650  1.586833455
+##  [96]  0.558486426 -1.276592208 -0.573265414 -1.224612615 -0.473400636</code></pre>
+<pre class="r"><code>##larger than
+x &gt; 2 </code></pre>
+<pre><code>##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [61]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
+##  [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [85] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [97] FALSE FALSE FALSE FALSE</code></pre>
+<pre class="r"><code>which(x &gt;2)</code></pre>
+<pre><code>## [1] 61 70</code></pre>
+<pre class="r"><code># data frame ---------------------------------------------------------------
 # Create data frame
-x &lt;- c(&quot;Pristine&quot;, &quot;Pristine&quot;, &quot;Disturbed&quot;, &quot;Disturbed&quot;, &quot;Pristine&quot;) # Lake type
-y &lt;- c(1.2, 2.2, 10.9, 50.0, 3.0) # TSS: total suspended solids (mg/L)
-df0 &lt;- data.frame(LakeType = x, TSS = y) # x is named as &quot;LakeType&quot; while y is named as &quot;TSS&quot;
+x &lt;- c(&quot;aquatic&quot;, &quot;snakes&quot;) 
+y &lt;- c(2.5, 3.5, 8.5, 6.6, 10.2) #girth 
+z &lt;- c(2.5 , 3.0 , 3.1 , 3.4 , 4.5) #length
+df0 &lt;- data.frame(girth = y, length = z) 
 df0</code></pre>
-<pre><code>##    LakeType  TSS
-## 1  Pristine  1.2
-## 2  Pristine  2.2
-## 3 Disturbed 10.9
-## 4 Disturbed 50.0
-## 5  Pristine  3.0</code></pre>
-<pre class="r"><code>colnames(df0) # call column names</code></pre>
-<pre><code>## [1] &quot;LakeType&quot; &quot;TSS&quot;</code></pre>
-<pre class="r"><code>df0$LakeType # access LakeType</code></pre>
-<pre><code>## [1] &quot;Pristine&quot;  &quot;Pristine&quot;  &quot;Disturbed&quot; &quot;Disturbed&quot; &quot;Pristine&quot;</code></pre>
-<pre class="r"><code>df0$TSS # access TSS</code></pre>
-<pre><code>## [1]  1.2  2.2 10.9 50.0  3.0</code></pre>
-<pre class="r"><code>df0[,1] # access column #1</code></pre>
-<pre><code>## [1] &quot;Pristine&quot;  &quot;Pristine&quot;  &quot;Disturbed&quot; &quot;Disturbed&quot; &quot;Pristine&quot;</code></pre>
-<pre class="r"><code>df0[1,] # access row #1</code></pre>
-<pre><code>##   LakeType TSS
-## 1 Pristine 1.2</code></pre>
-<pre class="r"><code>df0[c(2,4),] # access row #2 and 4</code></pre>
-<pre><code>##    LakeType  TSS
-## 2  Pristine  2.2
-## 4 Disturbed 50.0</code></pre>
+<pre><code>##   girth length
+## 1   2.5    2.5
+## 2   3.5    3.0
+## 3   8.5    3.1
+## 4   6.6    3.4
+## 5  10.2    4.5</code></pre>
+<pre class="r"><code>set.seed(1)
+x &lt;- rnorm(100, mean = 10, sd = 3)
+y &lt;- rpois(100, lambda = 10)
+z &lt;- rep(c(&quot;VA&quot;, &quot;NC&quot;), 50)
+df0 &lt;- data.frame(temperature = x, abundance = y, state = z)
+
+va_t &lt;- df0$temperature[df0$state == &quot;VA&quot;]
+mu_va_t &lt;- mean(va_t)
+va_a &lt;- df0$abundance[df0$state == &quot;VA&quot;]
+mu_va_a &lt;- mean(va_a)
+nc_t &lt;- df0$temperature[df0$state == &quot;NC&quot;]
+mu_nc_t &lt;- mean(nc_t)
+nc_a &lt;- df0$abundance[df0$state == &quot;NC&quot;]
+mu_nc_a &lt;- mean(nc_a)
+## extra
+v_va &lt;- with(df0, temperature[state == &quot;VA&quot;])
+v_nc &lt;- with(df0, temperature[state == &quot;NC&quot;])
+
+##Tapply
+v_mu &lt;- tapply(df0$temperature,
+       INDEX = df0$state,
+       FUN = mean)
+
+v_mu &lt;- with(df0,
+     tapply(temperature,
+            INDEX = state,
+            FUN = mean))</code></pre>
 
 
 
