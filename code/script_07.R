@@ -68,12 +68,12 @@ m <- w * 1000
 
 ## Calculate SD and MAD for w and m.
 
-(var_w <- sum((w - mean(w))^2) / length(w))
+(var_w <- sqrt(sum((w - mean(w))^2) / length(w)))
 
 (sd_w <- sqrt(var_w))
 (mad_w <- median(abs(w - median(w))))
 
-(var_m <- sum((m - mean(m))^2) / length(m))
+(var_m <- sqrt(sum((m - mean(m))^2) / length(m)))
 (sd_m <- sqrt(var_m))
 (mad_m <- median(abs(m - median(m))))
 
