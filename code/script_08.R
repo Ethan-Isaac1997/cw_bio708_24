@@ -64,17 +64,17 @@ print(df_i)
 # for reproducibility
 set.seed(3)
 
-mu_i <- sigma2 <- NULL 
+mu_i <- sigma2_i <- NULL 
 for (i in 1:100) {
   df_i <- df_h0 %>% 
     sample_n(size = 10) 
   mu_i[i] <- mean(df_i$height)
-  sigma2[i] <- sum((df_i$height - mean(df_i$height))^2) / nrow(df_i) 
+  sigma2_i[i] <- sum((df_i$height - mean(df_i$height))^2) / nrow(df_i) 
   
 }
 
 print(mu_i)
-print(sigma2)
+print(sigma2_i)
 
 
 ## Building histograms with using this data
@@ -82,7 +82,7 @@ print(sigma2)
 #install.packages("patchwork") # install only once
 library(patchwork)
 
-df_sample <- tibble(mu_hat = mu_i, var_hat = sigma2)
+df_sample <- tibble(mu_hat = mu_i, var_hat = sigma2_i)
 
 ## histogram for mean
 g_mu <- df_sample %>% 
