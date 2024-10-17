@@ -93,7 +93,7 @@ n_g <- n_distinct(df_anova$lake)
 
 var_b <- s_b/n_distinct(df_anova$lake)-1
 
-var_w <- s_b / (n_g - 1)
+var_w <- s_b / nrow(df_anova) - n_distinct(df_anova$lake)
 
 f_value <- var_b / var_w
 
