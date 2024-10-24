@@ -87,7 +87,7 @@ n_g <- n_distinct(df_pg$weight)
 
 var_b <- s_b/(n_distinct(df_pg$weight)-1)
 
-var_w <- s_b / (nrow(df_pg) - n_distinct(df_pg$weight))
+var_w <- nrow(df_pg) - n_distinct(df_pg$group)
 
 f_value <- var_b / var_w
 
@@ -118,7 +118,7 @@ fsb <- function(data){
     pull(ss) %>% 
     sum()
   
-  var_w <- s_b / (nrow(data) - n_distinct(data$weight))
+ var_w <- nrow(df_pg) - n_distinct(df_pg$group)
   
   f_value <- var_b / var_w
   

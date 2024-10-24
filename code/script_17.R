@@ -58,3 +58,8 @@ r2 <- 1 - ss / ss_0
 print(r2)
 
 ## for loop 
+df_set <- iris %>% 
+  filter(Species == "setosa")
+
+ss_null <- sum(with(df_set, (Sepal.Width - mean(Sepal.Width)))^2)
+ss <- sum(lm(Sepal.Width ~ )
