@@ -46,6 +46,7 @@ fit
 
 mu <- mean(df_pg$weight)
 
+## between group
 s_b <- df_pg %>% 
   group_by(group) %>% 
   summarize(mu_g = mean(weight), 
@@ -55,10 +56,9 @@ s_b <- df_pg %>%
   pull(ss) %>% 
   sum()
 
-var_b <- s_b / (n_distinct(df_pg$weight) -1)
-var_b
-##within group
+var_b <- s_b / (n_distinct(df_pg$group) -1)
 
+##within group
 s_w <- df_pg %>% 
   group_by(group) %>% 
   mutate(mu_g = mean(weight)) %>% 
@@ -70,7 +70,6 @@ s_w <- df_pg %>%
   sum()
 
 ## What I did 
-
 mu <- mean(df_pg$weight)
 df_g <- df_pg %>% 
   group_by(group) %>% 
@@ -83,11 +82,10 @@ df_g <- df_g %>%
 
 s_b <- sum(df_g$ss)
 
-n_g <- n_distinct(df_pg$weight)
+n_g <- n_distinct(df_pg$group)
 
-var_b <- s_b/(n_distinct(df_pg$weight)-1)
-
-var_w <- nrow(df_pg) - n_distinct(df_pg$group)
+var_b <- s_b/ (n_g - 1)
+var_w <- s_w / (nrow(df_pg) - n_distinct(df_pg$group))
 
 f_value <- var_b / var_w
 
@@ -107,7 +105,7 @@ fsb <- function(data){
               ss = dev_g * n) %>%  
     pull(ss) %>% 
     sum()
-  var_b <- s_b/n_distinct(data$weight)-1
+  var_b <- s_b/(n_distinct(data$group)-1)
   s_w <- df_pg %>% 
     group_by(group) %>% 
     mutate(mu_g = mean(weight)) %>% 
@@ -118,7 +116,7 @@ fsb <- function(data){
     pull(ss) %>% 
     sum()
   
- var_w <- nrow(df_pg) - n_distinct(df_pg$group)
+  var_w <- nrow(df_pg) - n_distinct(df_pg$group)
   
   f_value <- var_b / var_w
   
