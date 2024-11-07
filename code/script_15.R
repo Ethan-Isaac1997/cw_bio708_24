@@ -116,7 +116,7 @@ fsb <- function(data){
     pull(ss) %>% 
     sum()
   
-  var_w <- nrow(df_pg) - n_distinct(df_pg$group)
+  var_w <- s_w / (nrow(df_pg) - n_distinct(df_pg$group))
   
   f_value <- var_b / var_w
   
@@ -125,3 +125,5 @@ fsb <- function(data){
 }
 
 fsb(data = df_pg)
+
+summary(fit)
