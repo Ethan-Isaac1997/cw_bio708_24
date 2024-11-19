@@ -35,4 +35,4 @@ mean(y/10)
 
 ## From the set of p examined, find the parameter value that maximizes the likelihood
 
-
+(mu = y/10) 
